@@ -27,13 +27,12 @@ def login():
     return tweepy.API(auth)
 
 
-def tweet(event, max_retry=5):
+def tweet(api, event, max_retry=5):
     event_tweet = construct_tweet(event)
     try:
-        api = login()
         api.update_status(status=event_tweet)
     except Exception as e:
         if max_retry != 1:
-            tweet(event, max_retry - 1)
+            tweet(api, event, max_retry - 1)
         else:
             logging.error(e)

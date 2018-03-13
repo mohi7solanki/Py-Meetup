@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 from decouple import config
 
-from tweet import tweet
+from tweet import login, tweet
 from utils import next_month
 
 URL = 'https://api.meetup.com/find/upcoming_events'
@@ -53,8 +53,9 @@ def main():
         res = requests.get(URL, params=params)
         data = json.loads(res.text)
         events = filter_events(data['events'])
+        api = login()
         for event in events:
-            tweet(event)
+            tweet(api, event)
             print(f'Tweeted event {event["name"]} successfully!')
             time.sleep(3 * 60)
 
