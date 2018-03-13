@@ -8,7 +8,6 @@ name = "pypi"
 [packages]
 
 requests = "*"
-celery = "*"
 tweepy = "*"
 python-decouple = "*"
 
