@@ -1,6 +1,7 @@
 import json
 import logging
 import pickle
+import time
 from datetime import datetime
 
 import requests
@@ -36,6 +37,7 @@ def get_previous_events():
 
 
 def filter_events(events):
+    """Remove events that has been tweeted previously."""
     previous_events = get_previous_events()
     with open('previous_events.pickle', 'wb') as f:
         filtered_events = filter(
@@ -54,6 +56,7 @@ def main():
         for event in events:
             tweet(event)
             print(f'Tweeted event {event["name"]} successfully!')
+            time.sleep(3 * 60)
 
     except Exception as e:
         logging.error(e)
