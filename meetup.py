@@ -63,7 +63,6 @@ def main():
         for event in events:
             tweet(api, event)
             print(f'Tweeted event {event["name"]} successfully!')
-            break
             time.sleep(3 * 60)
 
     except Exception as e:
