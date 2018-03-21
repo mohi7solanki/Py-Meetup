@@ -1,4 +1,3 @@
-import json
 import logging
 import pickle
 import time
@@ -57,7 +56,7 @@ def filter_events(events):
 def main():
     try:
         res = requests.get(URL, params=params)
-        data = json.loads(res.text)
+        data = res.json()
         events = filter_events(data['events'])
         api = login()
         for event in events:
