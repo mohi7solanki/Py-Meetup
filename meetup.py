@@ -18,6 +18,7 @@ logging.basicConfig(filename='errors.log', level=logging.INFO)
 date = next_month(datetime.today())
 
 params = {
+    'start_date_range': f'{datetime.today().strftime("%Y-%m-%d")}T00:00:00',
     'end_date_range': f'{date.strftime("%Y-%m-%d")}T00:00:00',
     'key': config('key'),
     'lat': 12.9716,
