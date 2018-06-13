@@ -11,7 +11,7 @@ logging.basicConfig(filename='errors.log', level=logging.INFO)
 def construct_tweet(event):
     event_tweet = '{} on {} at {} more details at {}'.format(
         event['name'].strip(),
-        datetime.strptime(event['local_date'], "%Y-%m-%d").strftime("%-m %B"),
+        datetime.strptime(event['local_date'], "%Y-%m-%d").strftime("%-d %B"),
         datetime.strptime(event['local_time'], "%H:%M").strftime("%I:%M %p"),
         event['link'],
     )
